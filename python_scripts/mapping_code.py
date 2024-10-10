@@ -37,8 +37,13 @@ def create_masked_entity_dictionary(input_file_path):
     return masked_entity_dict
 
 # Input and output file paths
-input_file_path = 'original_queries/val_og_query.jsonl'
-output_file_path = 'mapped_queries/val_mapped_query.json'
+input_file_path = 'original_queries/train_aug_og_query.jsonl'
+output_file_path = 'mapped_queries/train_aug_mapped_query.json'
+# input_file_path = 'original_queries/val_og_query.jsonl'
+# output_file_path = 'mapped_queries/val_mapped_query.json'
+# input_file_path = 'original_queries/test_og_query.jsonl'
+# output_file_path = 'mapped_queries/test_mapped_query.json'
+
 
 # Create the dictionary
 masked_entity_dict = create_masked_entity_dictionary(input_file_path)

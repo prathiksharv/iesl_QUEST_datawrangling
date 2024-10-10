@@ -15,7 +15,7 @@ def filter_and_write_non_null_original_query(input_file_path, output_file_path):
                 outfile.write('\n')  # Write a newline after each JSON object
 
 # Input file path and output file path
-input_file_path = 'test.jsonl'
+input_file_path = 'quest/test.jsonl'
 output_file_path = 'original_queries/test_og_query.jsonl'
 
 # Filter and write examples with non-null 'original_query' to a new file
