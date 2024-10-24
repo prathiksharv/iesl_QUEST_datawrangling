@@ -9,7 +9,7 @@ with open('preprocessed_files/all_categories_filtered.json') as f:
 
 # Function to normalize document titles (replace "_" with "") and convert to lower case
 def normalize_title(title):
-    return title.replace("_", "").lower()
+    return title.replace("_", " ").lower()
 
 # Load the documents.jsonl file (line-separated JSON)
 documents_data = []
@@ -41,14 +41,14 @@ for key in queries_data.keys():
         normalized_docs = [normalize_title(doc) for doc in categories_data[key]]
         output_data[key_lower]['docs'] = normalized_docs
 
-        # # Append only the document text from documents.jsonl
-        # output_data[key_lower]['docs_text'] = []
-        # for doc_title in normalized_docs:
-        #     doc_text = get_document_text(doc_title)
-        #     if doc_text:
-        #         output_data[key_lower]['docs_text'].append(doc_text)  # Only append the text content
-        #     else:
-        #         output_data[key_lower]['docs_text'].append("Document text not found")
+        # Append only the document text from documents.jsonl
+        output_data[key_lower]['docs_text'] = []
+        for doc_title in normalized_docs:
+            doc_text = get_document_text(doc_title)
+            if doc_text:
+                output_data[key_lower]['docs_text'].append(doc_text)  # Only append the text content
+            else:
+                output_data[key_lower]['docs_text'].append("Document text not found")
 
 # Save the output to a JSON file
 with open('preprocessed_files/training_data.json', 'w') as f:
