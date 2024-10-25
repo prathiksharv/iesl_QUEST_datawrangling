@@ -26,8 +26,8 @@ def extract_single_masked_token(input_file_path, output_file_path):
                 
                 # Loop through all masked tokens and process each one
                 for masked_token in masked_tokens:
-                    # Convert the masked token to lowercase
-                    masked_key = masked_token.lower()
+                    # DO NOT Convert the masked token to lowercase as wkipedia search is case sensitive
+                    masked_key = masked_token
 
                     # Check if the masked_key already exists in the dictionary
                     if masked_key in masked_token_dict:

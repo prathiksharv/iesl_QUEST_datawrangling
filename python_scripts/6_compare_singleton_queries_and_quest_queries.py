@@ -18,16 +18,16 @@ def load_json(file_path):
         return json.load(file)
 
 def extract_marked_tokens(text):
-    """Extract all <mark>...</mark> tokens from a string and convert to lowercase."""
+    """Extract all <mark>...</mark> tokens from a string and DO NOT convert to lowercase as wikipedia search by category is case sensitive."""
     pattern = r"<mark>(.*?)</mark>"
-    return [token.lower() for token in re.findall(pattern, text)]
+    return [token for token in re.findall(pattern, text)]
 
 def filter_queries(quest_data, category_data):
     """Filter and extract records where all <mark> tokens are in category_data keys."""
     result = {}
 
-    # Convert category keys to lowercase for comparison
-    category_keys = {key.lower() for key in category_data.keys()}
+    # DO NOT convert category keys to lowercase for comparison as wikipedia search by category is case sensitive
+    category_keys = {key for key in category_data.keys()}
 
     for record in quest_data:
         original_query = record.get("original_query")
