@@ -1,3 +1,4 @@
 # Ignore JSONL files
 *.jsonl
 iesl_env/
+training_data.json/
