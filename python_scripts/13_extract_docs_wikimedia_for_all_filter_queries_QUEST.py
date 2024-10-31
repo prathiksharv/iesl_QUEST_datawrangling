@@ -1,6 +1,11 @@
 import json
 import requests
 from datetime import datetime
+import logging
+
+# Set up logging
+logging.basicConfig(filename="error_log.log", level=logging.ERROR, 
+                    format="%(asctime)s - %(levelname)s - %(message)s")
 
 # Record script start time
 start_time = datetime.now()
@@ -30,12 +35,11 @@ with open("preprocessed_files/iesl_quest_all_marks.json", "r") as file:
 # Get both original and manipulated keys
 original_keys, manipulated_keys = get_all_keys(data)
 
-# print("Original keys:", original_keys)
 print("Length of all filter queries from QUEST:", len(manipulated_keys))
 
 #########################################################################
 
-category_list = manipulated_keys[:100]
+category_list = manipulated_keys
 
 # Define the API URL for Wikimedia
 url = "https://en.wikipedia.org/w/api.php"
@@ -60,45 +64,55 @@ def fetch_page_content(page_id):
     return page_info.get("extract", "No content found")
 
 # Iterate over each category in the list
-for category_name in category_list:
-    # Parameters to fetch pages in the current category
-    params = {
-        "action": "query",
-        "list": "categorymembers",
-        "cmtitle": f"Category:{category_name}",
-        "cmlimit": 100,  # Number of results to return
-        "format": "json"
-    }
+for i, category_name in enumerate(category_list, start=1):
+    try:
+        # Parameters to fetch pages in the current category
+        params = {
+            "action": "query",
+            "list": "categorymembers",
+            "cmtitle": f"Category:{category_name}",
+            "cmlimit": 100,  # Number of results to return
+            "format": "json"
+        }
 
-    # Send a request to get the list of pages in the category
-    response = requests.get(url, params=params)
-    data = response.json()
-    
-    # Initialize lists to store page titles and contents for this category
-    page_titles = []
-    page_contents = []
+        # Send a request to get the list of pages in the category
+        response = requests.get(url, params=params)
+        response.raise_for_status()  # Check if the request was successful
+        data = response.json()
 
-    # Extract the page IDs from the response and fetch their content
-    for page in data['query']['categorymembers']:
-        page_title = page['title']
-        page_id = page['pageid']
-        
-        # Append the title to the list of titles
-        page_titles.append(page_title)
-        
-        # Fetch the content of the page and append to the list of contents
-        page_content = fetch_page_content(page_id)
-        page_contents.append(page_content)
+        # Initialize lists to store page titles and contents for this category
+        page_titles = []
+        page_contents = []
 
-    # Add the titles and contents to the dictionary for this category
-    all_categories_data[category_name] = {
-        "page_titles": page_titles,
-        "page_contents": page_contents
-    }
-    
+        # Extract the page IDs from the response and fetch their content
+        for page in data['query']['categorymembers']:
+            page_title = page['title']
+            page_id = page['pageid']
+            
+            # Append the title to the list of titles
+            page_titles.append(page_title)
+            
+            # Fetch the content of the page and append to the list of contents
+            page_content = fetch_page_content(page_id)
+            page_contents.append(page_content)
 
-# Print the resulting JSON object (for testing purposes)
-print(json.dumps(all_categories_data, indent=4))
+        # Add the titles and contents to the dictionary for this category
+        all_categories_data[category_name] = {
+            "page_titles": page_titles,
+            "page_contents": page_contents
+        }
+
+        # Print progress every 100 queries
+        if i % 100 == 0:
+            print(f"Documents extracted for {i} queries")
+
+    except Exception as e:
+        # Log the error with the problematic key
+        logging.error(f"Error processing category '{category_name}': {e}")
+        print(f"Skipping category '{category_name}' due to an error")
+
+# # Print the resulting JSON object (for testing purposes)
+# print(json.dumps(all_categories_data, indent=4))
 
 # Optionally save the result to a JSON file
 with open("Quest_Filter_Queries_Extracted.json", "w") as json_file:
@@ -109,6 +123,3 @@ end_time = datetime.now()
 print("Script end time:", end_time)
 
 print("Total execution time:", end_time - start_time)
-
-
-
