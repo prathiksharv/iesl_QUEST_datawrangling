@@ -4,7 +4,7 @@ from datetime import datetime
 import logging
 
 # Set up logging
-logging.basicConfig(filename="error_log.log", level=logging.ERROR, 
+logging.basicConfig(filename="error_log_2.log", level=logging.ERROR, 
                     format="%(asctime)s - %(levelname)s - %(message)s")
 
 # Record script start time
@@ -39,8 +39,8 @@ print("Length of all filter queries from QUEST:", len(manipulated_keys))
 
 #########################################################################
 
-category_list = manipulated_keys[:1500]
-# category_list = manipulated_keys[1500:3000]
+# category_list = manipulated_keys[:1500]
+category_list = manipulated_keys[1500:3000]
 # category_list = manipulated_keys[3000:]
 
 
@@ -118,7 +118,7 @@ for i, category_name in enumerate(category_list, start=1):
 # print(json.dumps(all_categories_data, indent=4))
 
 # Optionally save the result to a JSON file
-with open("Run1_Quest_Filter_Queries_Extracted.json", "w") as json_file:
+with open("Run2_Quest_Filter_Queries_Extracted.json", "w") as json_file:
     json.dump(all_categories_data, json_file, indent=4)
     
 # Record script end time
