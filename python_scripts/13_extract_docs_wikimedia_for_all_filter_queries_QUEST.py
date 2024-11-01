@@ -5,7 +5,7 @@ import logging
 import os
 
 # Set up logging
-logging.basicConfig(filename="error_log_2.log", level=logging.ERROR, 
+logging.basicConfig(filename="error_log_3.log", level=logging.ERROR, 
                     format="%(asctime)s - %(levelname)s - %(message)s")
 
 # Record script start time
@@ -38,7 +38,9 @@ original_keys, manipulated_keys = get_all_keys(data)
 print("Length of all filter queries from QUEST:", len(manipulated_keys))
 
 # Define categories range
-category_list = manipulated_keys[1500:3000]
+# category_list = manipulated_keys[:1500]
+# category_list = manipulated_keys[1500:3000]
+category_list = manipulated_keys[3000:]
 
 # Define the API URL for Wikimedia
 url = "https://en.wikipedia.org/w/api.php"
