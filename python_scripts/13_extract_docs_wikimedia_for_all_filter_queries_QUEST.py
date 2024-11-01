@@ -46,7 +46,7 @@ category_list = manipulated_keys[3000:]
 url = "https://en.wikipedia.org/w/api.php"
 
 # Initialize or load existing data
-output_file_path = "Run2_Quest_Filter_Queries_Extracted.json"
+output_file_path = "Run3_Quest_Filter_Queries_Extracted.json"
 if os.path.exists(output_file_path):
     with open(output_file_path, "r") as file:
         all_categories_data = json.load(file)
