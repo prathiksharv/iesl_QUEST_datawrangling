@@ -6,8 +6,10 @@ logging.basicConfig(filename='utf-encode_log.log', level=logging.INFO,
                     format='%(asctime)s - %(levelname)s - %(message)s')
 
 # Process JSONL file
-input_file = 'doc_extractions/Sample_Jsonl.jsonl'
-output_file = '3Q_sample.jsonl'
+input_file = 'doc_extractions/Quest_Filter_Queries_Extracted_Docs.jsonl'
+output_file = 'Quest_Filter_Queries_Extracted_Docs_Jsonl.jsonl'
+# input_file = 'doc_extractions/Sample_Jsonl.jsonl'
+# output_file = 'Sample_jsonl.jsonl'
 
 def encode_utf8(data):
     """Recursively encode all string values in the dictionary to UTF-8."""
