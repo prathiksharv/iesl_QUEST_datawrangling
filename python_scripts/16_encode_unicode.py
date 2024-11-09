@@ -2,12 +2,12 @@ import json
 import logging
 
 # Configure logging
-logging.basicConfig(filename='utf-encode_log.log', level=logging.INFO,
+logging.basicConfig(filename='cleaned_data_utf_encode_log.log', level=logging.INFO,
                     format='%(asctime)s - %(levelname)s - %(message)s')
 
 # Process JSONL file
-input_file = 'doc_extractions/Quest_Filter_Queries_Extracted_Docs.jsonl'
-output_file = 'Quest_Filter_Queries_Extracted_Docs_Jsonl.jsonl'
+input_file = 'doc_extractions/cleaned_data.jsonl'       #did not use this file, created new script to use this file
+output_file = 'doc_extractions/cleaned_data_utf_encoded.jsonl'
 # input_file = 'doc_extractions/Sample_Jsonl.jsonl'
 # output_file = 'Sample_jsonl.jsonl'
 
