@@ -6,3 +6,4 @@ doc_extractions/Run1_Quest_Filter_Queries_Extracted.json
 doc_extractions/Run2_Quest_Filter_Queries_Extracted.json
 doc_extractions/Run3_Quest_Filter_Queries_Extracted.json
 doc_extractions/Quest_Filter_Queries_Extracted_JSON_utfencoded.json
+doc_extractions/filtered_atomic_query_doc.csv
