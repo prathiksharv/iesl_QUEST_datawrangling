@@ -65,4 +65,4 @@ with open(output_file, 'w') as f:
         f.write('\n')
 
 print("Data cleaning complete. Cleaned data saved to", output_file)
-print("Exclusion log created: 'exclusion_log.log'")
+print("Exclusion log created: 'data_cleaning_log.log'")
