@@ -1,0 +1,18 @@
+2024-11-09 18:02:12,900 - INFO - Minimum number of documents (including zero): 0
+2024-11-09 18:02:12,900 - INFO - Minimum number of documents (excluding zero): 1
+2024-11-09 18:02:12,900 - INFO - Maximum number of documents: 20
+2024-11-09 18:02:12,900 - INFO - Average number of documents: 8.74
+2024-11-09 18:02:12,902 - INFO - Queries with 0 documents:
+                                                  query docs  ...                                           metadata  doc_count
+376                  Hong Kong action films set in 1948   []  ...  {'template': '_ that are also _', 'domain': 'f...          0
+481    2000's animated Australian films about dinosaurs   []  ...  {'template': '_ that are also both _ and _', '...          0
+973   Buddy films about mental states and the film i...   []  ...  {'template': '_ that are also both _ and _', '...          0
+1059  Films that are about friendship and crickets o...   []  ...  {'template': '_ that are also both _ and _', '...          0
+1510  African-American American fantasy comedy-drama...   []  ...  {'template': '_ that are also _', 'domain': 'f...          0
+2502      1945 Alfred A. Knopf and 2nd-millennium books   []  ...  {'template': '_ that are also both _ and _', '...          0
+3631  German Hutchinson (publisher) books based on a...   []  ...  {'template': '_ that are also both _ and _', '...          0
+4059      New American Library Books about the military   []  ...  {'template': '_ that are also _', 'domain': 'b...          0
+5376  British historical novels that are G. P. Putna...   []  ...  {'template': '_ that are also _', 'domain': 'b...          0
+6225         American adventure Crime films set in 1944   []  ...  {'template': '_ that are also both _ and _', '...          0
+
+[10 rows x 6 columns]
